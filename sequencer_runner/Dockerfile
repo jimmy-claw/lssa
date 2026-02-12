@@ -17,8 +17,12 @@ RUN apt-get update && apt-get install -y \
 # Install r0vm (manual build as it's portable across different host platforms)
 RUN git clone --depth 1 --branch release-3.0 https://github.com/risc0/risc0.git
 RUN git clone --depth 1 --branch r0.1.91.1 https://github.com/risc0/rust.git
+
+# Install rzup FIRST (before entering /risc0 which has rust-toolchain.toml pinning 1.89)
+# The rzup crate needs Rust 1.91+ for its AWS SDK dependencies
+RUN cargo install --path /risc0/rzup
+
 WORKDIR /risc0
-RUN cargo install --path rzup
 RUN rzup build --path /rust rust --verbose
 RUN cargo install --path risc0/cargo-risczero
 ENV PATH="/root/.cargo/bin:/root/.risc0/bin:${PATH}"
