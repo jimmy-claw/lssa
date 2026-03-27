@@ -19,6 +19,7 @@ impl NativeTokenTransfer<'_> {
                 vec![PrivacyPreservingAccount::PrivateOwned(from)],
                 Program::serialize_instruction(instruction).unwrap(),
                 &Program::authenticated_transfer_program().into(),
+                vec![],
             )
             .await
             .map(|(resp, secrets)| {
@@ -48,6 +49,7 @@ impl NativeTokenTransfer<'_> {
                 ],
                 instruction_data,
                 &program.into(),
+                vec![],
                 tx_pre_check,
             )
             .await
@@ -75,6 +77,7 @@ impl NativeTokenTransfer<'_> {
                 ],
                 instruction_data,
                 &program.into(),
+                vec![],
                 tx_pre_check,
             )
             .await

@@ -4,8 +4,8 @@ use serde::{Deserialize, Serialize};
 
 use crate::{Commitment, account::AccountId};
 
-#[derive(Debug, Serialize, Deserialize, PartialEq, Eq)]
-#[cfg_attr(any(feature = "host", test), derive(Clone, Hash))]
+#[derive(Debug, Clone, Serialize, Deserialize, BorshSerialize, BorshDeserialize, PartialEq, Eq)]
+#[cfg_attr(any(feature = "host", test), derive(Hash))]
 pub struct NullifierPublicKey(pub [u8; 32]);
 
 impl From<&NullifierPublicKey> for AccountId {
@@ -62,6 +62,17 @@ impl Nullifier {
         const INIT_PREFIX: &[u8; 32] = b"/NSSA/v0.2/Nullifier/Initialize/";
         let mut bytes = INIT_PREFIX.to_vec();
         bytes.extend_from_slice(&npk.to_byte_array());
+        Self(Impl::hash_bytes(&bytes).as_bytes().try_into().unwrap())
+    }
+
+    /// Compute a vote nullifier for a multisig proposal.
+    /// Ties the voter's identity (NSK) to a specific proposal index,
+    /// preventing double-voting while preserving voter privacy.
+    pub fn for_vote(nsk: &NullifierSecretKey, proposal_index: u64) -> Self {
+        const VOTE_PREFIX: &[u8; 32] = b"/NSSA/v0.2/Nullifier/Vote/\x00\x00\x00\x00\x00\x00";
+        let mut bytes = VOTE_PREFIX.to_vec();
+        bytes.extend_from_slice(nsk);
+        bytes.extend_from_slice(&proposal_index.to_be_bytes());
         Self(Impl::hash_bytes(&bytes).as_bytes().try_into().unwrap())
     }
 }

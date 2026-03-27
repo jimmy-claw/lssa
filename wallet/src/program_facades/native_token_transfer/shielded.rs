@@ -22,6 +22,7 @@ impl NativeTokenTransfer<'_> {
                 ],
                 instruction_data,
                 &program.into(),
+                vec![],
                 tx_pre_check,
             )
             .await
@@ -54,6 +55,7 @@ impl NativeTokenTransfer<'_> {
                 ],
                 instruction_data,
                 &program.into(),
+                vec![],
                 tx_pre_check,
             )
             .await

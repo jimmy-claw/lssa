@@ -52,6 +52,7 @@ async fn main() {
             accounts,
             Program::serialize_instruction(greeting).unwrap(),
             &program.into(),
+            vec![],
         )
         .await
         .unwrap();

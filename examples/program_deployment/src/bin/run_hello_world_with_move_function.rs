@@ -103,6 +103,7 @@ async fn main() {
                     accounts,
                     Program::serialize_instruction(instruction).unwrap(),
                     &program.into(),
+                    vec![],
                 )
                 .await
                 .unwrap();
@@ -144,6 +145,7 @@ async fn main() {
                     accounts,
                     Program::serialize_instruction(instruction).unwrap(),
                     &program.into(),
+                    vec![],
                 )
                 .await
                 .unwrap();

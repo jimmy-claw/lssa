@@ -64,6 +64,7 @@ pub fn execute_and_prove(
     private_account_nsks: Vec<NullifierSecretKey>,
     private_account_membership_proofs: Vec<Option<MembershipProof>>,
     program_with_dependencies: &ProgramWithDependencies,
+    extra_assumptions: Vec<Receipt>,
 ) -> Result<(PrivacyPreservingCircuitOutput, Proof), NssaError> {
     let ProgramWithDependencies {
         program,
@@ -122,6 +123,10 @@ pub fn execute_and_prove(
         private_account_membership_proofs,
         program_id: program_with_dependencies.program.id(),
     };
+
+    for r in &extra_assumptions {
+        env_builder.add_assumption(r.clone());
+    }
 
     env_builder.write(&circuit_input).unwrap();
     let env = env_builder.build().unwrap();
@@ -234,6 +239,7 @@ mod tests {
             vec![],
             vec![None],
             &Program::authenticated_transfer_program().into(),
+            vec![],
         )
         .unwrap();
 
@@ -333,6 +339,7 @@ mod tests {
             vec![sender_keys.nsk],
             vec![commitment_set.get_proof_for(&commitment_sender), None],
             &program.into(),
+            vec![],
         )
         .unwrap();
 
