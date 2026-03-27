@@ -256,6 +256,7 @@ fn build_privacy_transaction() -> PrivacyPreservingTransaction {
         vec![sender_nsk],
         vec![Some(proof)],
         &program.into(),
+        vec![],
     )
     .unwrap();
     let message = pptx::message::Message::try_from_circuit_output(

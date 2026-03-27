@@ -60,6 +60,7 @@ impl Pinata<'_> {
                 ],
                 nssa::program::Program::serialize_instruction(solution).unwrap(),
                 &nssa::program::Program::pinata().into(),
+                vec![],
             )
             .await
             .map(|(resp, secrets)| {

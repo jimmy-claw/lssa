@@ -362,8 +362,9 @@ impl WalletCore {
         accounts: Vec<PrivacyPreservingAccount>,
         instruction_data: InstructionData,
         program: &ProgramWithDependencies,
+        assumptions: Vec<risc0_zkvm::Receipt>,
     ) -> Result<(HashType, Vec<SharedSecretKey>), ExecutionFailureKind> {
-        self.send_privacy_preserving_tx_with_pre_check(accounts, instruction_data, program, |_| {
+        self.send_privacy_preserving_tx_with_pre_check(accounts, instruction_data, program, assumptions, |_| {
             Ok(())
         })
         .await
@@ -374,6 +375,7 @@ impl WalletCore {
         accounts: Vec<PrivacyPreservingAccount>,
         instruction_data: InstructionData,
         program: &ProgramWithDependencies,
+        assumptions: Vec<risc0_zkvm::Receipt>,
         tx_pre_check: impl FnOnce(&[&Account]) -> Result<(), ExecutionFailureKind>,
     ) -> Result<(HashType, Vec<SharedSecretKey>), ExecutionFailureKind> {
         let acc_manager = privacy_preserving_tx::AccountManager::new(self, accounts).await?;
@@ -398,6 +400,7 @@ impl WalletCore {
             acc_manager.private_account_auth(),
             acc_manager.private_account_membership_proofs(),
             &program.to_owned(),
+            assumptions,
         )
         .unwrap();
 
@@ -549,5 +552,14 @@ impl WalletCore {
     #[must_use]
     pub const fn config_overrides(&self) -> &Option<WalletConfigOverrides> {
         &self.config_overrides
+    }
+
+    /// Get the nullifier secret key for a private account.
+    /// Used by ZK proof generators (e.g. multisig vote circuit).
+    pub fn get_account_nullifier_secret_key(&self, account_id: AccountId) -> Option<nssa_core::NullifierSecretKey> {
+        self.storage
+            .user_data
+            .get_private_account(account_id)
+            .map(|(keys, _)| keys.private_key_holder.nullifier_secret_key)
     }
 }

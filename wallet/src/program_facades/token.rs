@@ -78,6 +78,7 @@ impl Token<'_> {
                 ],
                 instruction_data,
                 &Program::token().into(),
+                vec![],
             )
             .await
             .map(|(resp, secrets)| {
@@ -108,6 +109,7 @@ impl Token<'_> {
                 ],
                 instruction_data,
                 &Program::token().into(),
+                vec![],
             )
             .await
             .map(|(resp, secrets)| {
@@ -138,6 +140,7 @@ impl Token<'_> {
                 ],
                 instruction_data,
                 &Program::token().into(),
+                vec![],
             )
             .await
             .map(|(resp, secrets)| {
@@ -232,6 +235,7 @@ impl Token<'_> {
                 ],
                 instruction_data,
                 &Program::token().into(),
+                vec![],
             )
             .await
             .map(|(resp, secrets)| {
@@ -266,6 +270,7 @@ impl Token<'_> {
                 ],
                 instruction_data,
                 &Program::token().into(),
+                vec![],
             )
             .await
             .map(|(resp, secrets)| {
@@ -296,6 +301,7 @@ impl Token<'_> {
                 ],
                 instruction_data,
                 &Program::token().into(),
+                vec![],
             )
             .await
             .map(|(resp, secrets)| {
@@ -327,6 +333,7 @@ impl Token<'_> {
                 ],
                 instruction_data,
                 &Program::token().into(),
+                vec![],
             )
             .await
             .map(|(resp, secrets)| {
@@ -362,6 +369,7 @@ impl Token<'_> {
                 ],
                 instruction_data,
                 &Program::token().into(),
+                vec![],
             )
             .await
             .map(|(resp, secrets)| {
@@ -435,6 +443,7 @@ impl Token<'_> {
                 ],
                 instruction_data,
                 &Program::token().into(),
+                vec![],
             )
             .await
             .map(|(resp, secrets)| {
@@ -465,6 +474,7 @@ impl Token<'_> {
                 ],
                 instruction_data,
                 &Program::token().into(),
+                vec![],
             )
             .await
             .map(|(resp, secrets)| {
@@ -496,6 +506,7 @@ impl Token<'_> {
                 ],
                 instruction_data,
                 &Program::token().into(),
+                vec![],
             )
             .await
             .map(|(resp, secrets)| {
@@ -591,6 +602,7 @@ impl Token<'_> {
                 ],
                 instruction_data,
                 &Program::token().into(),
+                vec![],
             )
             .await
             .map(|(resp, secrets)| {
@@ -625,6 +637,7 @@ impl Token<'_> {
                 ],
                 instruction_data,
                 &Program::token().into(),
+                vec![],
             )
             .await
             .map(|(resp, secrets)| {
@@ -655,6 +668,7 @@ impl Token<'_> {
                 ],
                 instruction_data,
                 &Program::token().into(),
+                vec![],
             )
             .await
             .map(|(resp, secrets)| {
@@ -686,6 +700,7 @@ impl Token<'_> {
                 ],
                 instruction_data,
                 &Program::token().into(),
+                vec![],
             )
             .await
             .map(|(resp, secrets)| {
@@ -721,6 +736,7 @@ impl Token<'_> {
                 ],
                 instruction_data,
                 &Program::token().into(),
+                vec![],
             )
             .await
             .map(|(resp, secrets)| {

@@ -1226,6 +1226,7 @@ pub mod tests {
             vec![],
             vec![None],
             &Program::authenticated_transfer_program().into(),
+            vec![],
         )
         .unwrap();
 
@@ -1274,6 +1275,7 @@ pub mod tests {
             vec![sender_keys.nsk],
             vec![state.get_proof_for_commitment(&sender_commitment), None],
             &program.into(),
+            vec![],
         )
         .unwrap();
 
@@ -1322,6 +1324,7 @@ pub mod tests {
             vec![sender_keys.nsk],
             vec![state.get_proof_for_commitment(&sender_commitment)],
             &program.into(),
+            vec![],
         )
         .unwrap();
 
@@ -1536,6 +1539,7 @@ pub mod tests {
             vec![],
             vec![],
             &program.into(),
+            vec![],
         );
 
         assert!(matches!(result, Err(NssaError::CircuitProvingError(_))));
@@ -1562,6 +1566,7 @@ pub mod tests {
             vec![],
             vec![],
             &program.into(),
+            vec![],
         );
 
         assert!(matches!(result, Err(NssaError::CircuitProvingError(_))));
@@ -1588,6 +1593,7 @@ pub mod tests {
             vec![],
             vec![],
             &program.into(),
+            vec![],
         );
 
         assert!(matches!(result, Err(NssaError::CircuitProvingError(_))));
@@ -1614,6 +1620,7 @@ pub mod tests {
             vec![],
             vec![],
             &program.into(),
+            vec![],
         );
 
         assert!(matches!(result, Err(NssaError::CircuitProvingError(_))));
@@ -1648,6 +1655,7 @@ pub mod tests {
             vec![],
             vec![],
             &program.into(),
+            vec![],
         );
 
         assert!(matches!(result, Err(NssaError::ProgramProveFailed(_))));
@@ -1674,6 +1682,7 @@ pub mod tests {
             vec![],
             vec![],
             &program.into(),
+            vec![],
         );
 
         assert!(matches!(result, Err(NssaError::CircuitProvingError(_))));
@@ -1709,6 +1718,7 @@ pub mod tests {
             vec![],
             vec![],
             &program.into(),
+            vec![],
         );
 
         assert!(matches!(result, Err(NssaError::CircuitProvingError(_))));
@@ -1735,6 +1745,7 @@ pub mod tests {
             vec![],
             vec![],
             &program.into(),
+            vec![],
         );
 
         assert!(matches!(result, Err(NssaError::CircuitProvingError(_))));
@@ -1770,6 +1781,7 @@ pub mod tests {
             vec![],
             vec![],
             &program.into(),
+            vec![],
         );
 
         assert!(matches!(result, Err(NssaError::CircuitProvingError(_))));
@@ -1807,6 +1819,7 @@ pub mod tests {
             vec![],
             vec![],
             &program.into(),
+            vec![],
         );
 
         assert!(matches!(result, Err(NssaError::CircuitProvingError(_))));
@@ -1846,6 +1859,7 @@ pub mod tests {
             vec![sender_keys.nsk],
             vec![Some((0, vec![]))],
             &program.into(),
+            vec![],
         );
 
         assert!(matches!(result, Err(NssaError::CircuitProvingError(_))));
@@ -1880,6 +1894,7 @@ pub mod tests {
             vec![sender_keys.nsk],
             vec![Some((0, vec![]))],
             &program.into(),
+            vec![],
         );
 
         assert!(matches!(result, Err(NssaError::CircuitProvingError(_))));
@@ -1921,6 +1936,7 @@ pub mod tests {
             vec![sender_keys.nsk],
             private_account_membership_proofs.to_vec(),
             &program.into(),
+            vec![],
         );
 
         assert!(matches!(result, Err(NssaError::CircuitProvingError(_))));
@@ -1962,6 +1978,7 @@ pub mod tests {
             private_account_nsks.to_vec(),
             vec![],
             &program.into(),
+            vec![],
         );
 
         assert!(matches!(result, Err(NssaError::CircuitProvingError(_))));
@@ -2010,6 +2027,7 @@ pub mod tests {
             private_account_nsks.to_vec(),
             private_account_membership_proofs.to_vec(),
             &program.into(),
+            vec![],
         );
 
         assert!(matches!(result, Err(NssaError::CircuitProvingError(_))));
@@ -2056,6 +2074,7 @@ pub mod tests {
             vec![sender_keys.nsk],
             vec![Some((0, vec![]))],
             &program.into(),
+            vec![],
         );
 
         assert!(matches!(result, Err(NssaError::CircuitProvingError(_))));
@@ -2102,6 +2121,7 @@ pub mod tests {
             vec![sender_keys.nsk],
             vec![Some((0, vec![]))],
             &program.into(),
+            vec![],
         );
 
         assert!(matches!(result, Err(NssaError::CircuitProvingError(_))));
@@ -2148,6 +2168,7 @@ pub mod tests {
             vec![sender_keys.nsk],
             vec![Some((0, vec![]))],
             &program.into(),
+            vec![],
         );
 
         assert!(matches!(result, Err(NssaError::CircuitProvingError(_))));
@@ -2194,6 +2215,7 @@ pub mod tests {
             vec![sender_keys.nsk],
             vec![Some((0, vec![]))],
             &program.into(),
+            vec![],
         );
 
         assert!(matches!(result, Err(NssaError::CircuitProvingError(_))));
@@ -2238,6 +2260,7 @@ pub mod tests {
             vec![sender_keys.nsk],
             vec![Some((0, vec![]))],
             &program.into(),
+            vec![],
         );
 
         assert!(matches!(result, Err(NssaError::CircuitProvingError(_))));
@@ -2267,6 +2290,7 @@ pub mod tests {
             vec![],
             vec![],
             &program.into(),
+            vec![],
         );
 
         assert!(matches!(result, Err(NssaError::CircuitProvingError(_))));
@@ -2306,6 +2330,7 @@ pub mod tests {
             vec![sender_keys.nsk],
             vec![Some((0, vec![]))],
             &program.into(),
+            vec![],
         );
 
         assert!(matches!(result, Err(NssaError::CircuitProvingError(_))));
@@ -2352,6 +2377,7 @@ pub mod tests {
             vec![sender_keys.nsk],
             vec![Some((0, vec![]))],
             &program.into(),
+            vec![],
         );
 
         assert!(matches!(result, Err(NssaError::CircuitProvingError(_))));
@@ -2396,6 +2422,7 @@ pub mod tests {
             private_account_nsks.to_vec(),
             private_account_membership_proofs.to_vec(),
             &program.into(),
+            vec![],
         );
 
         assert!(matches!(result, Err(NssaError::CircuitProvingError(_))));
@@ -2486,6 +2513,7 @@ pub mod tests {
             private_account_nsks.to_vec(),
             private_account_membership_proofs.to_vec(),
             &program.into(),
+            vec![],
         );
 
         assert!(matches!(result, Err(NssaError::CircuitProvingError(_))));
@@ -2942,6 +2970,7 @@ pub mod tests {
                 state.get_proof_for_commitment(&to_commitment),
             ],
             &program_with_deps,
+            vec![],
         )
         .unwrap();
 
@@ -3187,6 +3216,7 @@ pub mod tests {
             vec![private_keys.nsk],
             vec![None],
             &program.into(),
+            vec![],
         )
         .unwrap();
 
@@ -3285,6 +3315,7 @@ pub mod tests {
             vec![private_keys.nsk],
             vec![None],
             &claimer_program.into(),
+            vec![],
         )
         .unwrap();
 
@@ -3330,6 +3361,7 @@ pub mod tests {
             vec![private_keys.nsk],
             vec![None],
             &noop_program.into(),
+            vec![],
         );
 
         assert!(matches!(res, Err(NssaError::CircuitProvingError(_))));
@@ -3402,6 +3434,7 @@ pub mod tests {
             vec![sender_keys.nsk],
             vec![Some((0, vec![]))],
             &program.into(),
+            vec![],
         );
 
         // Should succeed - no changes made, no claim needed
@@ -3429,6 +3462,7 @@ pub mod tests {
             vec![sender_keys.nsk],
             vec![Some((0, vec![]))],
             &program.into(),
+            vec![],
         );
 
         // Should fail - cannot modify data without claiming the account
@@ -3484,6 +3518,7 @@ pub mod tests {
             vec![recipient_keys.nsk],
             vec![state.get_proof_for_commitment(&recipient_commitment)],
             &program_with_deps,
+            vec![],
         );
 
         // Assert - should fail because the malicious program tries to manipulate is_authorized
