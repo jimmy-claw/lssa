@@ -95,11 +95,14 @@ pub fn execute_and_prove(
             return Err(NssaError::MaxChainedCallsDepthExceeded);
         }
 
+        // Pass extra_assumptions only to the first (top-level) program call
+        let call_assumptions = if chain_calls_counter == 0 { &extra_assumptions[..] } else { &[] };
         let inner_receipt = execute_and_prove_program(
             program,
             caller_program_id,
             &chained_call.pre_states,
             &chained_call.instruction_data,
+            call_assumptions,
         )?;
 
         let program_output: ProgramOutput = inner_receipt
@@ -162,9 +165,14 @@ fn execute_and_prove_program(
     caller_program_id: Option<ProgramId>,
     pre_states: &[AccountWithMetadata],
     instruction_data: &InstructionData,
+    extra_assumptions: &[Receipt],
 ) -> Result<Receipt, NssaError> {
     // Write inputs to the program
     let mut env_builder = ExecutorEnv::builder();
+    // Add any extra assumptions (e.g. sub-proofs from #[pre_tx_hook])
+    for r in extra_assumptions {
+        env_builder.add_assumption(r.clone());
+    }
     Program::write_inputs(
         program.id(),
         caller_program_id,
